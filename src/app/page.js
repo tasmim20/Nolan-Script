@@ -4,7 +4,7 @@ import herologo from "../../public/hero_logo.png"
 export default function Home() {
   return (
 
-   <div  className="hero  text-white max-h-full"  style={{
+   <div  className="hero  text-white max-h-full mb-0"  style={{
           backgroundImage: `url("https://www.nolanai.app/_next/image?url=https%3A%2F%2Fnolan-space.sfo3.cdn.digitaloceanspaces.com%2Fassets%2Fhero_1.webp&w=1920&q=75")`,
           height: '100vh',
           backgroundRepeat: 'no-repeat',
