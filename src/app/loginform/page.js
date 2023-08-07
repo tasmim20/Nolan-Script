@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-"use client"
-
+"use client";
 
 import React, { useContext, useState } from "react";
 import Link from "next/link";
@@ -9,13 +8,11 @@ import { FaGoogle, FaEye, FaEyeSlash, FaArrowRight } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "@/providers/AuthProvider";
 
-
 const page = () => {
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const { signIn } = useContext(AuthContext);
-  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,7 +31,8 @@ const page = () => {
           icon: "success",
           title: "Good job!",
           text: "Successfully Log In",
-        });        form.reset();
+        });
+        form.reset();
       })
       .catch((error) => {
         console.error(error);
@@ -47,37 +45,47 @@ const page = () => {
   };
   return (
     <div
-     
-      className="hero min-h-screen bg-base-200"
+      className=" text-white max-h-full"
+      style={{
+        backgroundImage: `url("https://www.nolanai.app/_next/image?url=https%3A%2F%2Fnolan-space.sfo3.cdn.digitaloceanspaces.com%2Fassets%2Flogin_hero.webp&w=3840&q=75")`,
+        height: "100vh",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
     >
-      <div className="hero-content w-full h-1/2 flex-col ">
+      <div>
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold text-white">Login now!</h1>
+          <h1 className="text-5xl font-bold text-white text-center py-10">
+            Login now!
+          </h1>
         </div>
-        <div className="card w-full max-w-lg shadow-2xl bg-gray-200">
+        <div
+          className="card mx-auto justify-center align-top lg:w-1/3 sm:w-full md:w-1/2 rounded-lg text-neutral-content"
+          style={{ backgroundColor: "#25272cb3" }}
+        >
           <form onSubmit={handleSubmit} className="card-body">
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-black">Email Address</span>
+                <span className="label-text text-white">Email Address</span>
               </label>
               <input
                 name="email"
                 type="email"
                 placeholder="email"
-                className="input input-bordered border-zinc-900 bg-white"
+                className="input input-bordered  border-gray-500  pr-10 w-full focus:bg-lightpink focus:text-white"
                 required
               />
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-black">Password</span>
+                <span className="label-text text-white">Password</span>
               </label>
               <div className="relative">
                 <input
                   name="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="password"
-                  className="input input-bordered border-zinc-900 bg-white pr-10 w-full"
+                  className="input input-bordered border-gray-500 bg-transparent pr-10 w-full focus:bg-lightpink focus:text-white"
                   required
                 />
                 <div
@@ -99,21 +107,25 @@ const page = () => {
             <div className="form-control mt-4">
               <input
                 type="submit"
-                className="btn btn-success text-black "
+                className="btn  text-white border-none  "
                 value="login"
+                style={{ backgroundColor: "#cc5e5e" }}
               />
             </div>
-            <div className="divider">Or Log in with</div>
+            <div className="divider text-white">Or Log in with</div>
           </form>
 
-          <div className="flex justify-around mb-6 mx-8">
+          <div className="flex justify-around mb-6 mx-8 text-white">
             <p>Need an account? </p>
-            <p>  <Link
-                href="/resister"
-                className="font-semibold text-green-600 flex items-center"
+            <p>
+              {" "}
+              <Link
+                href="/register"
+                className="font-semibold text-rose-400 flex items-center"
               >
                 Register <FaArrowRight className="mx-2"></FaArrowRight>
-              </Link></p>
+              </Link>
+            </p>
           </div>
         </div>
       </div>

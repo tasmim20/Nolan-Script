@@ -1,17 +1,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-"use client"
+"use client";
 import React, { useContext } from "react";
 import Link from "next/link";
 import { AuthContext } from "@/providers/AuthProvider";
 import Swal from "sweetalert2";
 import { GoogleAuthProvider } from "firebase/auth";
 
-
 const login = () => {
-  
   const { providerLogin } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
-  
 
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
@@ -23,7 +20,6 @@ const login = () => {
           title: "Good job!",
           text: "Successfully Log In",
         });
-       
       })
       .catch((error) => console.error(error));
   };
@@ -52,26 +48,27 @@ const login = () => {
           >
             <div className="card-body items-center text-center py-20">
               <button
-              onClick={handleGoogleSignIn}
+                onClick={handleGoogleSignIn}
                 className=" text-white rounded-full py-2 px-7 text-sm font-bold "
-                style={{ backgroundColor: "#cc5e5e", hover: "#e18080cf" }}
+                style={{ backgroundColor: "#cc5e5e" }}
               >
                 Continue with Google
               </button>
               <button
                 className=" text-white  rounded-full  py-2 px-5 my-5 text-sm font-bold "
-                style={{ backgroundColor: "#cc5e5e", hover: "#e18080cf" }}
+                style={{ backgroundColor: "#cc5e5e" }}
               >
                 Continue with Facebook
               </button>
-              {/* <button
+
+              <Link
                 className=" text-white   rounded-full  py-2 px-8 text-sm font-bold  "
                 style={{ backgroundColor: "#cc5e5e", hover: "#e18080cf" }}
+                href="/loginform"
               >
+                {" "}
                 Continue with Email
-              </button> */}
-              <Link   className=" text-white   rounded-full  py-2 px-8 text-sm font-bold  "
-                style={{ backgroundColor: "#cc5e5e", hover: "#e18080cf" }} href="/loginform">  Continue with Email</Link>
+              </Link>
               <p className="text-sm mt-5 text-white">Forget Password.?</p>
             </div>
             <p className="text-xs text-white text-center mb-2">
