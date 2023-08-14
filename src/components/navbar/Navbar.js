@@ -28,7 +28,6 @@ const Navbar = () => {
       .then(() => {
         // Redirect to the home page
         router.push("/");
-
       })
       .catch((error) => console.log(error));
   };
@@ -37,16 +36,14 @@ const Navbar = () => {
       <li>
         <Link href="/">Home</Link>
       </li>
-    
+
       <li>
         <Link href="/about">About us</Link>
       </li>
       <li>
         <Link href="/">Pricing</Link>
       </li>
-      <li>
-        <Link href="/addedBlog">My Blogs</Link>
-      </li>
+
       <li>
         <Link href="/blog">Blog</Link>
       </li>
@@ -54,6 +51,9 @@ const Navbar = () => {
         <>
           <li>
             <Link href="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <Link href="/addedBlog">My Blogs</Link>
           </li>
           <li>
             <button onClick={handleLogOut}>Log out</button>
@@ -84,7 +84,10 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar text-white" style={{ backgroundColor: "#202331" }}>
+    <div
+      className="navbar text-white uppercase"
+      style={{ backgroundColor: "#202331" }}
+    >
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -115,20 +118,11 @@ const Navbar = () => {
           <Image src={logo} alt="logo" width={90} height={54}></Image>
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
+
+      <div className="navbar-end md:mr-8 hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-center items-center font-bold">
           {navItems}
         </ul>
-      </div>
-      <div className="navbar-end md:mr-8">
-        <p className="font-bold btn btn-ghost">Mode</p>
-        <button
-          className="theme-toggle m-3 mr-6 text-gray-600"
-          onClick={toggleTheme}
-          aria-label={isDarkMode ? "Light Mode" : "Dark Mode"}
-        >
-          {isDarkMode ? <FaSun /> : <FaMoon />}
-        </button>
       </div>
     </div>
   );

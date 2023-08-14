@@ -44,7 +44,7 @@ const Blog = () => {
   return (
     <div>
       <div
-        className=" text-white max-h-full pl-10 justify-center"
+        className=" text-white max-h-full   w-full"
         style={{
           backgroundImage: `url("https://www.nolanai.app/_next/image?url=https%3A%2F%2Fnolan-space.sfo3.cdn.digitaloceanspaces.com%2Fassets%2Flogin_hero.webp&w=3840&q=75")`,
           height: "100vh",
@@ -52,9 +52,9 @@ const Blog = () => {
           backgroundSize: "cover",
         }}
       >
-        <div className="left-36">
-          <h2 className="text-2xl mb-4  ">Blog</h2>
-          <p className="text-5xl font-bold">
+        <div className="lg:pt-72 ps-10  pt-52 ">
+          <h2 className="lg:text-3xl text-2xl mb-4  ">Blog</h2>
+          <p className=" text-2xl lg:text-5xl font-bold">
             Unlocking the secrets of <br />
             successful screenwriting
           </p>
@@ -64,18 +64,18 @@ const Blog = () => {
         {data.map((item) => (
           <div key={item._id}>
             <div
-              className="card shadow-2xl"
+              className="card h-fit shadow-2xl"
               style={{ backgroundColor: "#202327" }}
             >
               <figure>
-                <div className="h-52">
+                <div className="h-52 w-full">
                   <Image
                     src={item.pictureUrl}
                     alt="Image"
-                    height={500}
-                    width={500}
+                    height={400}
+                    width={200}
                     priority={true}
-                    className="rounded "
+                    className="rounded w-full "
                   />
                 </div>
               </figure>
