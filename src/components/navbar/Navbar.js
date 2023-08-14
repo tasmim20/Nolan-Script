@@ -65,8 +65,8 @@ const Navbar = () => {
                   className="rounded-full w-8 mx-2 text-center"
                   src={user.photoURL}
                   alt="Image"
-                  height={50}
-                  width={50}
+                  height={40}
+                  width={40}
                   title={user.displayName}
                 />
               ) : (
@@ -88,7 +88,7 @@ const Navbar = () => {
       className="navbar text-white"
       style={{ backgroundColor: "#202331" }}
     >
-      <div className="navbar-start">
+      <div className="navbar-start h-16">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
