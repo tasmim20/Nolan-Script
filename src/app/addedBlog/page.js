@@ -2,7 +2,9 @@
 "use client";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "@/providers/AuthProvider";
+import { AiFillDelete } from "react-icons/Ai";
 import Swal from "sweetalert2";
+import Image from "next/image";
 const page = () => {
   const { user } = useContext(AuthContext);
   const userEmail = user?.email;
@@ -34,7 +36,7 @@ const page = () => {
       Swal.fire({
         icon: "success",
         title: "Good job!",
-        text: "Successfully Log In",
+        text: "Successfully Removed",
       });
     } catch (err) {
       console.log(err);
@@ -50,39 +52,37 @@ const page = () => {
   }
 
   return (
-    <div className="lg:mx-32">
-      <h2 className="text-center text-4xl my-10 font-bold text-white">
-        My Orders
-      </h2>
-      <div className=" my-10">
-        <div className="overflow-x-auto">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Title</th>
-                <th>Edit</th>
-              </tr>
-            </thead>
-            <tbody>
-              {blogs.map((blog, i) => (
-                <tr key={blog._id}>
-                  <td className="py-2">
-                    {i}. {blog.category}
-                  </td>
-                  <td>{blog.title}</td>
-                  <td
-                    onClick={() => handleDelete(blog._id)}
-                    className="btn btn-error text-xs"
-                  >
-                    {" "}
-                    DELETE
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+    <div className="mt-16 py-10 px-6 md:px-18 ">
+      <h1 className="text-xl md:text-4xl font-bold text-center text-white mb-8 pb-5">
+        My Blogs
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {blogs.map((blog, index) => (
+          <div
+            key={blog._id}
+            className="border rounded-lg p-4 "
+            style={{ backgroundColor: "#202327" }}
+          >
+            <div className="flex  items-center mb-2">
+              <h2 className="font-bold mr-4">
+                {index + 1}. {blog.title}
+              </h2>
+              <p
+                onClick={() => handleDelete(blog._id)}
+                className=" btn bg-red-300 text-red-700 btn-error border-none"
+              >
+                Delete<AiFillDelete></AiFillDelete>
+              </p>
+            </div>
+            <Image
+              src={blog.pictureUrl}
+              height={400}
+              width={400}
+              alt={blog.title}
+              className="w-full h-64 rounded-lg"
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
