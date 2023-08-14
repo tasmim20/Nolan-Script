@@ -6,7 +6,7 @@ import img1 from "public/blog_item_hero_bg.jpeg";
 
 async function getData(category) {
   const res = await fetch(
-    `http://localhost:3000/api/posts?category=${category}`,
+    `https://nolan-script.vercel.app/api/posts?category=${category}`,
     {
       cache: "no-store",
     }
