@@ -6,10 +6,12 @@ import { FaUser, FaMoon, FaSun } from "react-icons/fa";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/providers/AuthProvider";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  const router = useRouter();
   useEffect(() => {
     const root = window.document.documentElement;
     if (isDarkMode) {
@@ -25,6 +27,8 @@ const Navbar = () => {
     logOut()
       .then(() => {
         // Redirect to the home page
+        router.push("/");
+
       })
       .catch((error) => console.log(error));
   };
@@ -33,6 +37,7 @@ const Navbar = () => {
       <li>
         <Link href="/">Home</Link>
       </li>
+    
       <li>
         <Link href="/about">About us</Link>
       </li>
@@ -40,7 +45,7 @@ const Navbar = () => {
         <Link href="/">Pricing</Link>
       </li>
       <li>
-        <Link href="/script">Create Script</Link>
+        <Link href="/addedBlog">My Blogs</Link>
       </li>
       <li>
         <Link href="/blog">Blog</Link>

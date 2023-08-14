@@ -3,6 +3,7 @@ import Image from "next/image";
 import herologo from "../../public/hero_logo.png";
 import Features from "@/components/features/Features";
 import Video from "@/components/video/Video";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -24,25 +25,28 @@ export default function Home() {
             height={180}
           ></Image>
           <p className="lg:text-5xl font-serif  text-2xl lg:py-4 font-bold">
-            Free Script Writing Software
+            Script Writing Website
           </p>
           <div>
             <p className="text-2xl font-sans font-semibold mb-5">
               Unleash creativity with AI Copilot - craft compelling <br />{" "}
               screenplays
             </p>
-            <button
+            <Link
               className="btn  text-white p-7 pb-10"
+              href="/dashboard"
               style={{ backgroundColor: "#cc5e5e" }}
             >
-              Start Writing
-            </button>
-            <button
-              className="btn p-7 pb-10 ml-6 border-white text-white bg-none"
+              Start Creating
+            </Link>
+
+            <Link
+              className=" btn p-7 pb-10 ml-6 border-white text-white bg-none "
               style={{ backgroundColor: "#552a26" }}
+              href="/loginform"
             >
               login
-            </button>
+            </Link>
           </div>
         </div>
       </div>

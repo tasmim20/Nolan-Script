@@ -1,6 +1,59 @@
-import React from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
+"use client";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
+async function getData() {
+  const res = await fetch("http://localhost:3000/api/posts", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+const getUniqueCategories = (data) => {
+  const categories = {};
+  const uniqueData = [];
+
+  data.forEach((item) => {
+    if (!categories[item.category]) {
+      categories[item.category] = true;
+      uniqueData.push(item);
+    }
+  });
+
+  return uniqueData;
+};
 const Blog = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getData()
+      .then((fetchedData) => {
+        const uniqueData = getUniqueCategories(fetchedData);
+        setData(uniqueData);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
+      });
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center ">
+        <span className="loading loading-infinity loading-lg bg-red-600"></span>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div
@@ -12,44 +65,50 @@ const Blog = () => {
           backgroundSize: "cover",
         }}
       >
-        <h2 className="text-2xl mb-4  ">Blog</h2>
-        <p className="text-5xl font-bold">
-          Unlocking the secrets of <br />
-          successful screenwriting
-        </p>
+        <div className="left-36">
+          <h2 className="text-2xl mb-4  ">Blog</h2>
+          <p className="text-5xl font-bold">
+            Unlocking the secrets of <br />
+            successful screenwriting
+          </p>
+        </div>
       </div>
       <div className="grid  lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-10 my-20 lg:px-5 p-2 ">
-        {Array.from(Array(6)).map((_, index) => (
-          <div key={index}>
+        {data.map((item) => (
+          <div key={item._id}>
             <div
               className="card shadow-2xl"
               style={{ backgroundColor: "#202327" }}
             >
               <figure>
-                <img
-                  src="https://www.nolanai.app/_next/image?url=%2Fapi%2Fblog%2Fimages%2FnGd0s7mz5pBOABK8IM0u2&w=1080&q=75"
-                  alt="Shoes"
-                />
+                <div className="h-52">
+                  <Image
+                    src={item.pictureUrl}
+                    alt="Image"
+                    height={500}
+                    width={500}
+                    priority={true}
+                    className="rounded "
+                  />
+                </div>
               </figure>
               <div className="card-body font-sans">
                 <p className="text-sm">July 27 2023, 01:44</p>
-                <h2 className="card-title text-white">
-                  Unraveling the Art of Plot Hole Detection and Resolving
-                  Narrative Tangles
-                </h2>
+                <h2 className="card-title text-white">{item.title}</h2>
                 <p className="">
-                  As a seasoned scriptwriter, I have had the pleasure of
-                  crafting countless captivating stories that whisk audiences
-                  away on thrilling journeys. However, every writer knows the
-                  feeling of dread that comes with stumbling upon a plot hole –
-                  those perplexing gaps in a story that can leave readers or
-                  viewers scratching their heads. In this blog, we will delve
-                  into the art of plot hole detection, explore the various types
-                  of plot holes, and share effective techniques to resolve these
-                  narrative knots, ensuring a seamless and immersive
-                  storytelling experience for your audience.
+                  {/* {item.description.slice(0, 300) + '...'} */}
+                  {item.description.length > 50 ? (
+                    <p>
+                      {item.description.slice(0, 300) + "..."}{" "}
+                      <Link href={`/blog/${item.category}`}>
+                        {" "}
+                        <p className="text-blue-700 pt-2">See full article</p>
+                      </Link>
+                    </p>
+                  ) : (
+                    <p>{item.description}</p>
+                  )}
                 </p>
-                <p className="text-blue-700">See full article</p>
               </div>
             </div>
           </div>

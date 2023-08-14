@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Settings = () => {
+const viewBlog = () => {
     return (
         <div>
-            settings
+            <h2>viewblog</h2>
         </div>
     );
 };
 
-export default Settings;
+export default viewBlog;

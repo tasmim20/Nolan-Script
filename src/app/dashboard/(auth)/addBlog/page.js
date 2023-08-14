@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Users = () => {
+const addBlog = () => {
     return (
         <div>
-          all users  
+            <h2>addblog</h2>
         </div>
     );
 };
 
-export default Users;
+export default addBlog;
