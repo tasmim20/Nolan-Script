@@ -85,7 +85,7 @@ const Navbar = () => {
 
   return (
     <div
-      className="navbar text-white uppercase"
+      className="navbar text-white"
       style={{ backgroundColor: "#202331" }}
     >
       <div className="navbar-start">
