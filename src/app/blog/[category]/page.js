@@ -6,7 +6,7 @@ import img1 from "public/blog_item_hero_bg.jpeg";
 
 async function getData(category) {
   const res = await fetch(
-    `https://nolan-script.vercel.app/api/posts?category=${category}`,
+    `/api/posts?category=${category}`,
     {
       cache: "no-store",
     }
@@ -56,13 +56,13 @@ const Page = ({ params }) => {
             className="rounded-lg"
             style={{ backgroundColor: "#151A25" }}
           >
-            <div className="hero  mb-auto text-white max-h-full">
+            <div className=" hero mb-auto text-white max-h-full">
               <Image
                 src={img1}
                 alt="hero-logo"
-                width={1519}
-                height={200}
-                className="h-96"
+                width={1500}
+                height={50}
+                className="h-[450px]"
               ></Image>
 
               <div className="justify-right pl-20 lg:pl-48 py-4 w-full lg:-ml-52">

@@ -11,10 +11,11 @@ export default function Home() {
       <div
         className="hero  text-white max-h-full mb-0"
         style={{
-          backgroundImage: `url("https://www.nolanai.app/_next/image?url=https%3A%2F%2Fnolan-space.sfo3.cdn.digitaloceanspaces.com%2Fassets%2Fhero_1.webp&w=1920&q=75")`,
+          background: ` url("https://www.nolanai.app/_next/image?url=https%3A%2F%2Fnolan-space.sfo3.cdn.digitaloceanspaces.com%2Fassets%2Fhero_1.webp&w=1920&q=75"),linear-gradient(to left, #8b4040, #1c5f63)`,
           height: "100vh",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
+          opacity: .5,
         }}
       >
         <div className="justify-right pl-20 lg:pl-48 py-4 w-full lg:-ml-52">

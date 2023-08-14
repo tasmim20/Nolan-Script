@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 async function getData() {
-  const res = await fetch("https://nolan-script.vercel.app/api/posts", {
+  const res = await fetch("/api/posts", {
     cache: "no-store",
   });
 
@@ -16,28 +16,15 @@ async function getData() {
   return res.json();
 }
 
-const getUniqueCategories = (data) => {
-  const categories = {};
-  const uniqueData = [];
-
-  data.forEach((item) => {
-    if (!categories[item.category]) {
-      categories[item.category] = true;
-      uniqueData.push(item);
-    }
-  });
-
-  return uniqueData;
-};
 const Blog = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [showAllData, setShowAllData] = useState(false);
 
   useEffect(() => {
     getData()
       .then((fetchedData) => {
-        const uniqueData = getUniqueCategories(fetchedData);
-        setData(uniqueData);
+        setData(fetchedData);
         setIsLoading(false);
       })
       .catch((error) => {
