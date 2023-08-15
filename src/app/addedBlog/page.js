@@ -2,7 +2,7 @@
 "use client";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "@/providers/AuthProvider";
-import { AiFillDelete } from "react-icons/Ai";
+import { AiFillDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
 import Image from "next/image";
 const page = () => {

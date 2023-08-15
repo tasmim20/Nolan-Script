@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "start": "next start",
+    "script":"vercel build",
     "lint": "next lint"
   },
   "dependencies": {
