@@ -67,6 +67,7 @@ const About = () => {
               and dialogue, helping you turn your ideas into polished
               screenplays.
             </p>
+
             <p className="text-white my-3">
               For experienced scriptwriters, NolanAi can bring new ideas and
               inspiration to your writing. It can suggest fresh angles, plot
@@ -74,6 +75,7 @@ const About = () => {
               next level. And throughout the writing process, you are always in
               control.
             </p>
+            
             <h2 className="text-white my-2 font-bold ">
               NolanAi is here to help, not to take over.
             </h2>
